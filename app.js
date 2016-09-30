@@ -21,7 +21,7 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
                 var obj = JSON.parse(body);
                 var string = numeral(obj.bpi.VND.rate_float * moni / 1000).format('0,0');
                 if (string !== "NaN") {
-                    e.message.channel.sendMessage(string + "đ");
+                    e.message.channel.sendMessage("Thưa anh " + e.message.author.username + ", bằng " + string + "đ ạ");
                 }
             }
         });
