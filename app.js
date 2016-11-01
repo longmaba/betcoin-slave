@@ -53,7 +53,7 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
           request("https://api.coindesk.com/v1/bpi/currentprice/VND.json", function(error, response, body) {
             if (!error && response.statusCode == 200) {
               var obj = JSON.parse(body);
-              var string = numeral(obj.bpi.VND.rate_float * tmp / 1000).format('0,0');
+              var string = numeral(obj.bpi.VND.rate_float * ((1 / obj.bpi.USD.rate_float) * tmp * 1000) / 1000).format('0,0');
               var string2 = numeral((1 / obj.bpi.USD.rate_float) * tmp * 1000).format('0,0');
               if (string !== "NaN") {
                 e.message.channel.sendMessage(e.message.author.username + ": " + tmp + " usd = " + string2 + " mbtc = " + string + "đ");
