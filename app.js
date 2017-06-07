@@ -22,9 +22,6 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     for (var i = 0; i < value.length; i++) {
       var moni = parseInt(value[i].substring(1, value[i].indexOf("mbtc")));
       console.log(moni);
-      if (moni > 10000) {
-        e.message.channel.sendMessage(e.message.author.username + ", do you even have that much :moni: in VND? :hanz: :hanz:");
-      } else {
         (function(tmp) {
           request("https://api.coindesk.com/v1/bpi/currentprice/VND.json", function(error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -32,12 +29,21 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
               var string = numeral(obj.bpi.VND.rate_float * tmp / 1000).format('0,0');
               var string2 = numeral(obj.bpi.USD.rate_float * tmp / 1000).format('0,0');
               if (string !== "NaN") {
-                e.message.channel.sendMessage(e.message.author.username + ": " + tmp + " mbtc = " + string2 + " USD = " + string + "đ");
+                if (e.message.author.username == 'longmaba') {
+                e.message.channel.sendMessage("bẩm cụ Long ạ: " + tmp + " mbtc = " + string2 + " USD = " + string + "đ");
+                } else {
+                  if (tmp <= 50) {
+                e.message.channel.sendMessage(e.message.author.username + "<:cwl:251556903182663681>" + ": " + tmp + " mbtc = " + string2 + " USD = " + string + "đ");
+                  } else if (tmp > 50 || tmp < 1000) {
+                e.message.channel.sendMessage(e.message.author.username + "<:obama:250834454359048192>" + ": " + tmp + " mbtc = " + string2 + " USD = " + string + "đ");}
+                  else {
+                e.message.channel.sendMessage(e.message.author.username + "<:ruserious:258905874293194752>" + ": " + tmp + " mbtc = " + string2 + " USD = " + string + "đ");
+                  }
+                }
               }
             }
           });
         })(moni);
-      }
     };
   }
 
@@ -46,9 +52,6 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     for (var i = 0; i < value.length; i++) {
       var moni = parseInt(value[i].substring(1, value[i].indexOf("usd")));
       console.log(moni);
-      if (moni > 10000) {
-        e.message.channel.sendMessage(e.message.author.username + ", do you even have that much :moni: in VND? :hanz: :hanz:");
-      } else {
         (function(tmp) {
           request("https://api.coindesk.com/v1/bpi/currentprice/VND.json", function(error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -61,7 +64,6 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
             }
           });
         })(moni);
-      }
     };
   }
 
