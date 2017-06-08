@@ -83,13 +83,33 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     var j = content1.indexOf(" ", i+1);
     var team1 = content1.substring(i, j);
     var team2 = content1.substring(j);
-    if (team1 !== "" && team2 !== "") {
+    if (team1 !== "" && team2 !== "" && team1 !== "!covu") {
       e.message.channel.sendMessage(team1 + " cố lên các anh <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
       e.message.channel.sendMessage("Make us proud <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
-      e.message.channel.sendMessage("ỉa vào mồm bọn " + team2 + " <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
+      e.message.channel.sendMessage("ỉa vào mồm bọn" + team2 + " <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
     }
   }
 
-   if (content.search(/!bettattayhayko/g) !== -1) {
-    e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");}
+  if (content1.search(/!fightme/ig) !== -1) { 
+     var i = content1.indexOf(" ");
+    var j = content1.indexOf(" ", i+1);
+    var team1 = content1.substring(i, j);
+    var team2 = content1.substring(j);
+    if (team1 !== "" && team2 !== "" && team1 !== "!fightme") {
+      var result = Math.random();
+      if (result > 0.5) {
+      e.message.channel.sendMessage(team1 + " ỉa vào mồm bọn " + team2 + "nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+      } else {
+      e.message.channel.sendMessage(team2 + " ỉa vào mồm bọn " + team1 + "nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+      }
+    }
+  }
+
+  if (content.search(/!bettattayhayko/g) !== -1) {
+    e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
+  }
+
+  if (content.search(/!help/g) !== -1) {
+    e.message.channel.sendMessage("Có các command như sau: \n1.covu <team1> <team2>\n2.fightme <team1> <team2>\n3.<moni>mbtc\n4.<moni>usd\nNghịch ít thôi đcm <:cwl:251556903182663681>");
+  }
 });
