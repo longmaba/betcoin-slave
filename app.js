@@ -79,10 +79,10 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
   }
 
   if (content1.search(/!covu/ig) !== -1) {
-    var i = content.indexOf(" ");
-    var j = content.indexOf(" ", i+1);
-    var team1 = content.substring(i, j);
-    var team2 = content.substring(j);
+    var i = content1.indexOf(" ");
+    var j = content1.indexOf(" ", i+1);
+    var team1 = content1.substring(i, j);
+    var team2 = content1.substring(j);
     if (team1 !== "" && team2 !== "") {
       e.message.channel.sendMessage(team1 + " cố lên các anh <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
       e.message.channel.sendMessage("Make us proud <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
