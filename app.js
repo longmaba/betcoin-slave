@@ -98,9 +98,9 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     if (team1 !== "" && team2 !== "" && team1 !== "!fightme") {
       var result = Math.random();
       if (result > 0.5) {
-      e.message.channel.sendMessage(team1 + " ỉa vào mồm bọn " + team2 + "nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+      e.message.channel.sendMessage(team1 + " ỉa vào mồm bọn" + team2 + " nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
       } else {
-      e.message.channel.sendMessage(team2 + " ỉa vào mồm bọn " + team1 + "nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+      e.message.channel.sendMessage(team2 + " ỉa vào mồm bọn" + team1 + " nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
       }
     }
   }
