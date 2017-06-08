@@ -76,4 +76,13 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
       }
     });
   }
+
+  if (content.search(/!covu/g) !== -1) {
+    e.message.channel.sendMessage("mặc dù em đéo biết là ai nhưng các anh cố lên <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
+    e.message.channel.sendMessage("Make us proud <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+    e.message.channel.sendMessage("ỉa vào mồm chúng nó <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
+  }
+
+   if (content.search(/!bettattayhayko/g) !== -1) {
+    e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");}
 });
