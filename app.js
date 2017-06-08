@@ -16,6 +16,7 @@ client.Dispatcher.on(Events.GATEWAY_READY, e => {
 });
 
 client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
+  var content1 = e.message.content;
   var content = e.message.content.toLowerCase();
   if (content.search(/!(\d*)mbtc/g) !== -1) {
     var value = content.match(/!(\d*)mbtc/g);
@@ -77,7 +78,7 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     });
   }
 
-  if (content.search(/!covu/g) !== -1) {
+  if (content1.search(/!covu/ig) !== -1) {
     var i = content.indexOf(" ");
     var j = content.indexOf(" ", i+1);
     var team1 = content.substring(i, j);
