@@ -83,10 +83,15 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     var j = content1.indexOf(" ", i+1);
     var team1 = content1.substring(i, j);
     var team2 = content1.substring(j);
-    if (team1 !== "" && team2 !== "" && team1 !== "!covu") {
+    if (team1 !== "" && team2 !== "" && team1 !== "!covu" && team2 !== "!covu") {
       e.message.channel.sendMessage(team1 + " cố lên các anh <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
       e.message.channel.sendMessage("Make us proud <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
       e.message.channel.sendMessage("ỉa vào mồm bọn" + team2 + " <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
+    }
+    if (team1 == "") {
+      e.message.channel.sendMessage("mặc dù em đéo biết các anh là ai nhưng cố lên các anh ơiiiii! <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
+      e.message.channel.sendMessage("Make us proud <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+      e.message.channel.sendMessage("ỉa vào mồm bọn nó <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
     }
   }
 
@@ -98,14 +103,18 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     if (team1 !== "" && team2 !== "" && team1 !== "!fightme") {
       var result = Math.random();
       if (result > 0.5) {
-      e.message.channel.sendMessage(team1 + " ỉa vào mồm bọn" + team2 + " nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+      e.message.channel.sendMessage(team1 + " ỉa vào mồm" + team2 + " nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
       } else {
-      e.message.channel.sendMessage(team2 + " ỉa vào mồm bọn" + team1 + " nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
+      e.message.channel.sendMessage(team2 + " ỉa vào mồm" + team1 + " nhoé <:cwl:251556903182663681> <:cwl:251556903182663681> <:cwl:251556903182663681>");
       }
     }
   }
 
   if (content.search(/!bettattayhayko/g) !== -1) {
+    e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
+  }
+
+  if (content.search(/!bettheolichayko/g) !== -1) {
     e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
   }
 
