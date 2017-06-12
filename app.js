@@ -114,8 +114,9 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
   }
 
-  if (content.search(/!bettheolichayko/g) !== -1) {
-    e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
+  if (content.search(/buc/g) !== -1 || content.search(/bực/g) !== -1) { 
+    e.message.channel.sendMessage("Bình tĩnh anh " + e.message.author.username + " ơi <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
+    e.message.channel.sendMessage("Lúc tức hay bet láo rồi ăn lớn luôn đấy đcm <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
   }
 
   if (content.search(/!help/g) !== -1) {
