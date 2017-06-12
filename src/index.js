@@ -144,6 +144,11 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, async e => {
         ' commends <:obama:250834454359048192>'
     );
   }
+  if (content.search(/(b(u|ự)c?(.) ((m(ì|i)nh)|vcl|vkl|vbkl|vbcl|(c(a|ả) m(ì|i)nh)|(v(ã|a)i l(i|ì)n)|(v(ã|a)i c(u|ứ)t)|((đéo|deo) th(ể|e) ch(ị|i)u (được|dc|duoc))))/g) !== -1) { 
+    e.message.channel.sendMessage("Bình tĩnh anh " + e.message.author.username + " ơi <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
+    e.message.channel.sendMessage("Lúc tức hay bet láo rồi ăn lớn luôn đấy đcm <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
+
+  }
 
   if (content.search(/!help/g) !== -1) {
     e.message.channel.sendMessage("Có các command như sau: \n1.covu <team1> <team2>\n2.fightme <team1> <team2>\n3.<moni>mbtc\n4.<moni>usd\nNghịch ít thôi đcm <:cwl:251556903182663681>");
