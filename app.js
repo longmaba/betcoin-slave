@@ -114,7 +114,7 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
   }
 
-  if (content.search(/(b(u|ự)c?(.) m(ì|i)nh)/g) !== -1) { 
+  if (content.search(/(b(u|ự)c?(.) (m(ì|i)nh)|vcl|vkl)/g) !== -1) { 
     e.message.channel.sendMessage("Bình tĩnh anh " + e.message.author.username + " ơi <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
     e.message.channel.sendMessage("Lúc tức hay bet láo rồi ăn lớn luôn đấy đcm <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
   }
