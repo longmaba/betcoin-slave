@@ -77,12 +77,40 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
           request("https://api.coindesk.com/v1/bpi/currentprice/VND.json", function(error, response, body) {
             if (!error && response.statusCode == 200) {
               var obj = JSON.parse(body);
-              var string = numeral(obj.bpi.VND.rate_float * ((1 / obj.bpi.USD.rate_float) * tmp * 1000) / 1000).format('0,0');
-              var string2 = numeral((1 / obj.bpi.USD.rate_float) * tmp * 1000).format('0,0');
+              var string = numeral(tmp / (obj.bpi.VND.rate_float / obj.bpi.USD.rate_float)).format('0,0');
+              var string2 = numeral((1 / obj.bpi.VND.rate_float) * tmp * 1000).format('0,0');
               if (string !== "NaN") {
-                e.message.channel.sendMessage(e.message.author.username + ": " + tmp + " usd = " + string2 + " mbtc = " + string + "đ");
+                e.message.channel.sendMessage(e.message.author.username + ": " + tmp + " vnd = " + string2 + " mbtc = " + string + "USD");
               }
             }
+          });
+        })(moni);
+    };
+  }
+
+  if (content.search(/!(\d*)eth/g) !== -1) {
+    var value = content.match(/!(\d*)eth/g);
+    for (var i = 0; i < value.length; i++) {
+      var moni = parseInt(value[i].substring(1, value[i].indexOf("eth")));
+      console.log(moni);
+        (function(tmp) {
+          request("https://btc-e.com/api/3/ticker/eth_usd", function(error, response, body) {
+            if (!error && response.statusCode == 200) {
+              var obj = JSON.parse(body);
+              var eth = Math.round(tmp * obj.eth_usd.sell);
+              (function(tmp2) {
+              request("https://api.coindesk.com/v1/bpi/currentprice/VND.json", function(error, response, body) {  
+              var obj = JSON.parse(body);
+              var string = numeral(obj.bpi.VND.rate_float * ((1 / obj.bpi.USD.rate_float) * tmp2 * 1000) / 1000).format('0,0');
+              var string2 = numeral((1 / obj.bpi.USD.rate_float) * tmp2 * 1000).format('0,0');
+              if (string !== "NaN") {
+                e.message.channel.sendMessage(e.message.author.username + ": " + moni + " eth = " + eth + " USD = " + string + " VND = " + string2 + " mbtc");
+              } else {
+                console.log("err");
+              }
+              });
+            })(eth);
+          } 
           });
         })(moni);
     };
