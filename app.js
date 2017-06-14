@@ -1,22 +1,23 @@
-import Discordie from 'discordie';
-import request from 'request';
-import numeral from 'numeral';
-import CommendService from '../services/commend-service';
+var Discordie = require("discordie");
+var Events = Discordie.Events;
+var request = require('request');
+var client = new Discordie();
+var numeral = require('numeral');
 
-const Events = Discordie.Events;
-const client = new Discordie();
+
+
 
 client.connect({
-  token: 'MjMxMjc3MTA4NTE5NzYzOTc4.Cs-BKQ.Oy9JzukNhZ6Kc7aJJuj70hGQqYg'
+  token: "MjMxMjc3MTA4NTE5NzYzOTc4.Cs-BKQ.Oy9JzukNhZ6Kc7aJJuj70hGQqYg"
 });
 
 client.Dispatcher.on(Events.GATEWAY_READY, e => {
-  console.log('Connected as: ' + client.User.username);
+  console.log("Connected as: " + client.User.username);
 });
 
-client.Dispatcher.on(Events.MESSAGE_CREATE, async e => {
-  let content1 = e.message.content;
-  let content = e.message.content.toLowerCase();
+client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
+  var content1 = e.message.content;
+  var content = e.message.content.toLowerCase();
   if (content.search(/!(\d*)mbtc/g) !== -1) {
     var value = content.match(/!(\d*)mbtc/g);
     for (var i = 0; i < value.length; i++) {
@@ -94,8 +95,8 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, async e => {
     }
   }
 
-  if (content1.search(/!fightme/ig) !== -1) {
-    var i = content1.indexOf(" ");
+  if (content1.search(/!fightme/ig) !== -1) { 
+     var i = content1.indexOf(" ");
     var j = content1.indexOf(" ", i+1);
     var team1 = content1.substring(i, j);
     var team2 = content1.substring(j);
@@ -113,41 +114,9 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, async e => {
     e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
   }
 
-  if (content.search(/!commend/g) !== -1) {
-    var receiver = content.substring(content.search(' ') + 1);
-    var sender = e.message.author.username;
-    if (receiver == sender) {
-      e.message.channel.sendMessage(
-        'Did you seriously just commend yourself? You shameless motherfucker  <:cwl:251556903182663681> <:cwl:251556903182663681>'
-      );
-    } else {
-      await CommendService.addCommend(receiver, sender);
-      let commend = await CommendService.viewCommended(
-        receiver
-      );
-      e.message.channel.sendMessage(
-        receiver +
-          ' vừa được ' +
-          sender +
-          ' commends <:obama:250834454359048192>, total: +' +
-          commend
-      );
-    }
-  }
-
-  if (content.search(/!viewmine/g) !== -1) {
-    let commend = await CommendService.viewCommended(e.message.author.username);
-    e.message.channel.sendMessage(
-      e.message.author.username +
-        ': +' +
-        commend +
-        ' commends <:obama:250834454359048192>'
-    );
-  }
   if (content.search(/(b(u|ự)c?(.) ((m(ì|i)nh)|vcl|vkl|vbkl|vbcl|(c(a|ả) m(ì|i)nh)|(v(ã|a)i l(i|ì)n)|(v(ã|a)i c(u|ứ)t)|((đéo|deo) th(ể|e) ch(ị|i)u (được|dc|duoc))))/g) !== -1) { 
     e.message.channel.sendMessage("Bình tĩnh anh " + e.message.author.username + " ơi <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
     e.message.channel.sendMessage("Lúc tức hay bet láo rồi ăn lớn luôn đấy đcm <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
-
   }
 
   if (content.search(/!help/g) !== -1) {
