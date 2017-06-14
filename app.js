@@ -68,6 +68,26 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     };
   }
 
+   if (content.search(/!(\d*)vnd/g) !== -1) {
+    var value = content.match(/!(\d*)vnd/g);
+    for (var i = 0; i < value.length; i++) {
+      var moni = parseInt(value[i].substring(1, value[i].indexOf("vnd")));
+      console.log(moni);
+        (function(tmp) {
+          request("https://api.coindesk.com/v1/bpi/currentprice/VND.json", function(error, response, body) {
+            if (!error && response.statusCode == 200) {
+              var obj = JSON.parse(body);
+              var string = numeral(obj.bpi.VND.rate_float * ((1 / obj.bpi.USD.rate_float) * tmp * 1000) / 1000).format('0,0');
+              var string2 = numeral((1 / obj.bpi.USD.rate_float) * tmp * 1000).format('0,0');
+              if (string !== "NaN") {
+                e.message.channel.sendMessage(e.message.author.username + ": " + tmp + " usd = " + string2 + " mbtc = " + string + "đ");
+              }
+            }
+          });
+        })(moni);
+    };
+  }
+
   if (content.search(/!getbanpick/g) !== -1) {
     var teamName = content.substring(content.search(/!getbanpick(.*)/g) + 11);
     request("https://guarded-escarpment-56551.herokuapp.com/getABC/" + teamName, function(error, response, body) {
@@ -114,7 +134,7 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
     e.message.channel.sendMessage("Thôi em xin anh đừng <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
   }
 
-  if (content.search(/((b(u|ự)c?(\.)) ((m(ì|i)nh)|vcl|vkl|vbkl|vbcl|(c(a|ả) m(ì|i)nh)|(v(ã|a)i l(i|ì)n)|(v(ã|a)i c(u|ứ)t)|((đéo|deo) th(ể|e) ch(ị|i)u (được|dc|duoc))))/g) !== -1) { 
+  if (content.search(/((b(u|ự)c(\.)?) ((m(ì|i)nh)|vcl|vkl|vbkl|vbcl|(c(a|ả) m(ì|i)nh)|(v(ã|a)i l(i|ì)n)|(v(ã|a)i c(u|ứ)t)|((đéo|deo) th(ể|e) ch(ị|i)u (được|dc|duoc))))/g) !== -1) { 
     e.message.channel.sendMessage("Bình tĩnh anh " + e.message.author.username + " ơi <:energy:258084491937972224> <:energy:258084491937972224> <:energy:258084491937972224>");
     e.message.channel.sendMessage("Lúc tức hay bet láo rồi ăn lớn luôn đấy đcm <:sparta:281284109299482625> <:sparta:281284109299482625> <:sparta:281284109299482625>");
   }
